@@ -1,22 +1,6 @@
 import "./index.css";
 import { useRef } from "react";
-import Github from "./assets/GitHub.png";
-import HTML from "./assets/HTML.png";
-import CSS from "./assets/CSS.png";
-import Javascript from "./assets/Javascript.png";
-import React from "./assets/React.png";
-import Node from "./assets/Node.js.png";
-import DEV from "./assets/Code.png";
-import Devices from "./assets/Devices.png";
-import Hard from "./assets/HardDrives.png";
-import Infinity from "./assets/Infinity.png";
-import LinkedIn from "./assets/LinkedinLogo.png";
-import Instagram from "./assets/InstagramLogo.png";
-import GITHUB from "./assets/GithubLogo.png";
-import Email from "./assets/EnvelopeSimple.png";
-import Ticket_AI from "./assets/Ticket_AI.png";
-import inOrbit from "./assets/in.Orbit.png";
-import Planner from "./assets/webPlanner.png";
+
 
 
 import { FaAnglesDown } from "react-icons/fa6";
@@ -43,7 +27,7 @@ export function App() {
             alt=""
             className="rounded-full w-48 border-[4px] border-red-700"
           />
-          <img src={DEV} alt="" className="absolute bottom-0 right-6" />
+          <img src="https://github.com/user-attachments/assets/ef1e3965-c476-4cee-b569-2b38d0cdb37f" alt="" className="absolute bottom-0 right-6" />
         </div>
 
         <p className="text-3xl leading-5 font-poppins mt-16">
@@ -61,12 +45,12 @@ export function App() {
         </span>
 
         <div className="w-[758px] flex mt-20 gap-4">
-          <Tags src={Github} alt="" text="Git Hub" />
-          <Tags src={HTML} alt="" text="HTML" />
-          <Tags src={CSS} alt="" text="CSS" />
-          <Tags src={Javascript} alt="" text="JavaScript" />
-          <Tags src={React} alt="" text="React" />
-          <Tags src={Node} alt="" text="Node.js" />
+          <Tags src="https://github.com/user-attachments/assets/af3d17ac-0592-469d-890e-b1d8987d6e13" alt="" text="Git Hub" />
+          <Tags src="https://github.com/user-attachments/assets/ed65a025-2308-4318-b0d7-feb8809bb6ab" alt="" text="HTML" />
+          <Tags src="https://github.com/user-attachments/assets/92dffbb6-091d-4103-b200-aa8dd0bfebbe" alt="" text="CSS" />
+          <Tags src="https://github.com/user-attachments/assets/3671f089-41f0-4d68-ac9e-7da171fb5ce7" alt="" text="JavaScript" />
+          <Tags src="https://github.com/user-attachments/assets/7d4e89b6-e387-4e97-b645-9a42c0feadbb" alt="" text="React" />
+          <Tags src="https://github.com/user-attachments/assets/b179ad38-b689-429a-9606-75fd58bad370" alt="" text="Node.js" />
         </div>
 
         <button className="mt-24 hover" onClick={scrollToNextSection}>
@@ -90,7 +74,7 @@ export function App() {
         <div className="mt-14 grid grid-cols-3 gap-6">
           <a href="https://github.com/Ytalo-Alves/TicketIA?tab=readme-ov-file" target="_blank">
           <Card
-            src={Ticket_AI}
+            src="https://github.com/user-attachments/assets/2a4ce9f7-2681-471c-a00c-4d98b8b8aefe"
             alt=""
             title="Ticket AI"
             text="Ticket AI para o evento AI para Devs, integrando com a API do github"
@@ -99,7 +83,7 @@ export function App() {
           
           <a href="https://github.com/Ytalo-Alves/web_in.orbit" target="_blank">
           <Card
-            src={inOrbit}
+            src="https://github.com/user-attachments/assets/8b44c1c8-279a-4016-8328-39945bd18396"
             alt=""
             title="Gerenciador de metas"
             text="Aplicação Web para registro de metas com progresso semanal"
@@ -108,7 +92,7 @@ export function App() {
           
           <a href="https://github.com/Ytalo-Alves/web_planner">
           <Card
-            src={Planner}
+            src="https://github.com/user-attachments/assets/ea657e7f-ba0a-482c-ac92-6c6882a6d8c3"
             alt=""
             title="Planejador de Viagens"
             text="Aplicação web para planejamento de viagens, com o gerenciamento de atividades"
@@ -130,7 +114,7 @@ export function App() {
 
         <div className="flex mt-14 gap-6">
           <CardServices
-            src={Devices}
+            src="https://github.com/user-attachments/assets/b0f6d0b4-02f7-4190-ae54-55e1352147dd"
             alt=""
             title="Websites e aplicativos"
             text=" Especializado em desenvolvimento de interfaces intuitivas e
@@ -139,7 +123,7 @@ export function App() {
           />
 
           <CardServices
-            src={Hard}
+            src="https://github.com/user-attachments/assets/4860fe9a-5493-4a65-94b8-be2e7ce72e8c"
             alt=""
             title="API e Banco de dados"
             text="Oferecemos criação de serviços de sistema robustos e escaláveis,
@@ -148,7 +132,7 @@ export function App() {
           />
 
           <CardServices
-            src={Infinity}
+            src="https://github.com/user-attachments/assets/87606d46-f64c-4990-80ad-8647207449cc"
             alt=""
             title="DevOps"
             text="Foco na gestão eficiente e na infraestrutura sólida de aplicações,
@@ -172,7 +156,7 @@ export function App() {
         <div className="flex flex-col mt-12 gap-4">
           <a href="https://www.linkedin.com/in/ytalo-alves/" target="_blank">
           <ButtonLink
-            src={LinkedIn}
+            src="https://github.com/user-attachments/assets/1f3d09d7-b9ba-41af-9d35-46a2782e36d1"
             alt=""
             text="Linkedin"
             Icon={FiArrowUpRight}
@@ -182,7 +166,7 @@ export function App() {
           
           <a href="https://www.instagram.com/alves_97_/" target="_blank">
           <ButtonLink
-            src={Instagram}
+            src="https://github.com/user-attachments/assets/2125e777-6f76-4ecd-bc3b-b6d124127e9a"
             alt=""
             text="Instagram"
             Icon={FiArrowUpRight}
@@ -193,7 +177,7 @@ export function App() {
 
           <a href="https://github.com/Ytalo-Alves/YtaloAlves" target="_blank">
           <ButtonLink
-            src={GITHUB}
+            src="https://github.com/user-attachments/assets/be6e76c1-6f87-4290-9189-2c8099b8e130"
             alt=""
             text="GitHub"
             Icon={FiArrowUpRight}
@@ -203,7 +187,7 @@ export function App() {
 
           <a href="mailto:ytaloalves10@hotmail.com">
           <ButtonLink
-            src={Email}
+            src="https://github.com/user-attachments/assets/1074fccc-3bc3-479d-8be5-02ec9e7710f9"
             alt=""
             text="E-mail"
             Icon={FiArrowUpRight}

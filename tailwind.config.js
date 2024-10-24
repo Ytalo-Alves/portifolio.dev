@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'bg-info': "url('./src/assets/bg-intro.png')",
+        'bg-info': "url('https://github.com/user-attachments/assets/a95579a7-5987-4119-8eaf-56cc5e949df0')",
       },
       fontFamily: {
         'poppins': ['Inconsolata', 'Arial', 'sans-serif'],
