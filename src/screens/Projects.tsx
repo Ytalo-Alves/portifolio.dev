@@ -3,6 +3,7 @@ import Card from "../components/card";
 export default function Projects(){
   return(
     <div
+    id="projects"
         className="w-full h-screen flex flex-col items-center justify-center bg-bg-info bg-cover px-4"
       >
         <p className="font-poppins text-red-500 text-2xl md:text-3xl text-center">Meu trabalho</p>

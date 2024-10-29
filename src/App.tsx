@@ -1,120 +1,77 @@
+// App.js
 import "./index.css";
-
-
-
-import { FiArrowUpRight } from "react-icons/fi";
-import Card from "./components/card";
-import ButtonLink from "./components/ButtonLink";
-import CardServices from "./components/CardServices";
+import { useEffect, useState } from "react";
 import Home from "./screens/Home";
 import Projects from "./screens/Projects";
+import Services from "./screens/Services";
+import Contacts from "./screens/Contacts";
 
 export function App() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Lista das URLs das imagens (exemplo; substitua pelos links do GitHub)
+  const imageUrls = [
+    "http://github.com/Ytalo-Alves.png",
+    "https://github.com/user-attachments/assets/ef1e3965-c476-4cee-b569-2b38d0cdb37f",
+    "https://github.com/Ytalo-Alves/TicketIA?tab=readme-ov-file",
+    "https://github.com/user-attachments/assets/2a4ce9f7-2681-471c-a00c-4d98b8b8aefe",
+    "https://github.com/Ytalo-Alves/web_in.orbit",
+    "https://github.com/user-attachments/assets/8b44c1c8-279a-4016-8328-39945bd18396",
+    "https://github.com/Ytalo-Alves/web_planner",
+    "https://github.com/user-attachments/assets/ea657e7f-ba0a-482c-ac92-6c6882a6d8c3",
+    "https://github.com/user-attachments/assets/b0f6d0b4-02f7-4190-ae54-55e1352147dd",
+    "https://github.com/user-attachments/assets/4860fe9a-5493-4a65-94b8-be2e7ce72e8c",
+    "https://github.com/user-attachments/assets/87606d46-f64c-4990-80ad-8647207449cc",
+    "https://github.com/user-attachments/assets/1f3d09d7-b9ba-41af-9d35-46a2782e36d1",
+    "https://github.com/user-attachments/assets/2125e777-6f76-4ecd-bc3b-b6d124127e9a",
+    "https://github.com/user-attachments/assets/be6e76c1-6f87-4290-9189-2c8099b8e130",
+    "https://github.com/user-attachments/assets/1074fccc-3bc3-479d-8be5-02ec9e7710f9"
+  ];
+
+  // Função para carregar todas as imagens
+  const preloadImages = async () => {
+    const promises = imageUrls.map((url) => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = resolve;   // resolve quando a imagem carrega
+        img.onerror = reject;    // rejeita caso haja um erro ao carregar
+      });
+    });
+    await Promise.all(promises); // Espera todas as promessas das imagens
+  };
+
+  useEffect(() => {
+    preloadImages().then(() => {
+      setIsLoaded(true); // Define que tudo está carregado após as imagens
+    }).catch((error) => {
+      console.error("Erro ao carregar imagens:", error);
+      setIsLoaded(true); // Continua para renderizar a tela mesmo em caso de erro
+    });
+  }, []);
 
   return (
-
     <div className="w-full min-h-screen">
-      <Home/>
-      
-      <Projects/>
-
-      
-
-      {/* INÍCIO - MEUS SERVIÇOS */}
-      <div className="w-full min-h-screen flex flex-col items-center justify-center bg-bg-info bg-cover px-4">
-
-        <span className="text-red-500 text-2xl md:text-3xl font-poppins mt-10">
-          Meus serviços
-        </span>
-        <h1 className="text-2xl md:text-3xl font-title font-bold mt-2 text-center">
-          Como posso ajudar o seu negócio
-        </h1>
-
-        <div className="flex flex-col md:flex-row mt-10 md:mt-14 gap-6">
-          <CardServices
-            src="https://github.com/user-attachments/assets/b0f6d0b4-02f7-4190-ae54-55e1352147dd"
-            alt=""
-            title="Websites e aplicativos"
-            text=" Especializado em desenvolvimento de interfaces intuitivas e
-              modernas, proporcionando uma experiência de usuário única e
-              eficiente para web e aplicativos móveis"
-          />
-
-          <CardServices
-            src="https://github.com/user-attachments/assets/4860fe9a-5493-4a65-94b8-be2e7ce72e8c"
-            alt=""
-            title="API e Banco de dados"
-            text="Oferecemos criação de serviços de sistema robustos e escaláveis,
-              otimizando a performance e a eficiência para atender às
-              necessidades específicas de cada projeto."
-          />
-
-          <CardServices
-            src="https://github.com/user-attachments/assets/87606d46-f64c-4990-80ad-8647207449cc"
-            alt=""
-            title="DevOps"
-            text="Foco na gestão eficiente e na infraestrutura sólida de aplicações,
-              garantindo alta disponibilidade, segurança e desempenho otimizado
-              para soluções digitais."
-          />
+      {!isLoaded ? (
+        <div className="flex justify-center items-center min-h-screen">
+          <p>Loading...</p>
         </div>
-      </div>
-      {/* FIM - MEUS SERVIÇOS */}
-
-      {/* INÍCIO - CONTATOS */}
-      <div className="w-full h-screen bg-bg-info bg-cover flex flex-col items-center justify-center px-4">
-        <p className="font-poppins text-purple-500 text-2xl md:text-3xl">Contato</p>
-        <h1 className="text-2xl md:text-3xl font-title font-bold mt-2">
-          Gostou do meu trabalho?
-        </h1>
-        <p className="font-span text-gray-300 text-sm md:text-xl text-center">
-          Entre em contato ou acompanhe as minhas redes sociais!
-        </p>
-
-        <div className="flex lg:flex-col md:flex-row mt-12 gap-4 md:grid">
-          <a href="https://www.linkedin.com/in/ytalo-alves/" target="_blank">
-            <ButtonLink
-              src="https://github.com/user-attachments/assets/1f3d09d7-b9ba-41af-9d35-46a2782e36d1"
-              alt=""
-              text="LinkedIn"
-              Icon={FiArrowUpRight}
-              iconProps={{ size: 22, color: "#3b82f6" }}
-            />
-          </a>
-
-          <a href="https://www.instagram.com/alves_97_/" target="_blank">
-            <ButtonLink
-              src="https://github.com/user-attachments/assets/2125e777-6f76-4ecd-bc3b-b6d124127e9a"
-              alt=""
-              text="Instagram"
-              Icon={FiArrowUpRight}
-              iconProps={{ size: 22, color: "#3b82f6" }}
-              
-            />
-          </a>
-
-          <a href="https://github.com/Ytalo-Alves/YtaloAlves" target="_blank">
-            <ButtonLink
-              src="https://github.com/user-attachments/assets/be6e76c1-6f87-4290-9189-2c8099b8e130"
-              alt=""
-              text="GitHub"
-              Icon={FiArrowUpRight}
-              iconProps={{ size: 22, color: "#3b82f6" }}
-            />
-          </a>
-
-          <a href="mailto:ytaloalves10@hotmail.com">
-            <ButtonLink
-              src="https://github.com/user-attachments/assets/1074fccc-3bc3-479d-8be5-02ec9e7710f9"
-              alt=""
-              text="E-mail"
-              Icon={FiArrowUpRight}
-              iconProps={{ size: 22, color: "#3b82f6" }}
-            />
-          </a>
+      ) : (
+        <div>
+          <div id="home">
+            <Home />
+          </div>
+          <div id="projects">
+            <Projects />
+          </div>
+          <div id="services">
+            <Services />
+          </div>
+          <div id="contacts">
+            <Contacts />
+          </div>
         </div>
-      </div>
-      {/* FIM - CONTATOS */}
+      )}
     </div>
   );
 }

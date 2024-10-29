@@ -1,19 +1,10 @@
 import { FaAnglesDown } from "react-icons/fa6";
 import Tags from "../components/tags";
-import { useRef } from "react";
 
 export default function Home(){
 
-  const nextSectionRef = useRef<HTMLDivElement>(null);
-
-  const scrollToNextSection = () => {
-    if (nextSectionRef.current) {
-      nextSectionRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return(
-    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-bg-info bg-cover p-4">
+    <div id="home" className="w-full min-h-screen flex flex-col items-center justify-center bg-bg-info bg-cover p-4">
     <div className="relative inline-block animate-fadeDown">
       <img
         src="http://github.com/Ytalo-Alves.png"
@@ -76,7 +67,6 @@ export default function Home(){
 
     <button
       className="mt-16 md:mt-20 lg:mt-24 hover"
-      onClick={scrollToNextSection}
     >
       <FaAnglesDown
         size={32}
