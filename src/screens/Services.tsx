@@ -1,44 +1,82 @@
+import { FaCode, FaServer, FaCloud } from "react-icons/fa";
+import { motion } from "framer-motion";
 import CardServices from "../components/CardServices";
+import { SERVICES } from "../constants";
+import ScreenBackground from "../components/ScreenBackground";
+import SectionHeader from "../components/SectionHeader";
 
-export default function Services(){
-  return(
-    <div id="services" className="w-full min-h-screen flex flex-col items-center justify-center bg-bg-info bg-cover px-4">
+const iconMapping: Record<string, React.ReactNode> = {
+  frontend: <FaCode size={26} />,
+  backend: <FaServer size={26} />,
+  devops: <FaCloud size={26} />,
+};
 
-        <span className="text-red-500 text-2xl md:text-3xl font-poppins mt-10">
-          Meus serviços
-        </span>
-        <h1 className="text-2xl md:text-3xl font-title font-bold mt-2 text-center">
-          Como posso ajudar o seu negócio
-        </h1>
+export default function Services() {
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.08,
+      },
+    },
+  };
 
-        <div className="flex flex-col md:flex-row mt-10 md:mt-14 gap-6">
-          <CardServices
-            src="https://github.com/user-attachments/assets/b0f6d0b4-02f7-4190-ae54-55e1352147dd"
-            alt=""
-            title="Websites e aplicativos"
-            text=" Especializado em desenvolvimento de interfaces intuitivas e
-              modernas, proporcionando uma experiência de usuário única e
-              eficiente para web e aplicativos móveis"
-          />
+  const itemVariants = {
+    hidden: { opacity: 0, y: 14 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  };
 
-          <CardServices
-            src="https://github.com/user-attachments/assets/4860fe9a-5493-4a65-94b8-be2e7ce72e8c"
-            alt=""
-            title="API e Banco de dados"
-            text="Oferecemos criação de serviços de sistema robustos e escaláveis,
-              otimizando a performance e a eficiência para atender às
-              necessidades específicas de cada projeto."
-          />
+  return (
+    <section
+      id="services"
+      className="section min-h-screen relative flex items-center justify-center overflow-hidden"
+    >
+      <ScreenBackground />
 
-          <CardServices
-            src="https://github.com/user-attachments/assets/87606d46-f64c-4990-80ad-8647207449cc"
-            alt=""
-            title="DevOps"
-            text="Foco na gestão eficiente e na infraestrutura sólida de aplicações,
-              garantindo alta disponibilidade, segurança e desempenho otimizado
-              para soluções digitais."
-          />
+      <div className="container-custom relative z-10 w-full py-16 md:py-24">
+        <SectionHeader
+          label="SERVIÇOS"
+          title={
+            <>
+              Soluções <span className="gradient-text">Especializadas</span>
+            </>
+          }
+          description="Desenvolvimento completo para impulsionar o seu negócio."
+          align="center"
+        />
+
+        {/* Services Grid */}
+        <div className="mt-12 relative rounded-3xl p-[1px] bg-gradient-to-br from-white/15 via-accent/20 to-transparent">
+          <div className="rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-xl p-4 md:p-6">
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {SERVICES.map((service) => (
+                <motion.div
+                  key={service.id}
+                  className="h-full"
+                  variants={itemVariants}
+                >
+                  <CardServices
+                    title={service.title}
+                    description={service.description}
+                    icon={iconMapping[service.id] || <FaCode size={26} />}
+                    features={service.features}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
-  )
+    </section>
+  );
 }

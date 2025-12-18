@@ -1,47 +1,63 @@
-import Card from "../components/card";
+import { useState } from "react";
+import ProjectCard from "../components/ProjectCard";
+import ProjectModal from "../components/ProjectModal";
+import { PROJECTS } from "../constants";
+import { ProjectData } from "../types";
+import ScreenBackground from "../components/ScreenBackground";
+import SectionHeader from "../components/SectionHeader";
 
-export default function Projects(){
-  return(
-    <div
-    id="projects"
-        className="w-full h-screen flex flex-col items-center justify-center bg-bg-info bg-cover px-4"
-      >
-        <p className="font-poppins text-red-500 text-2xl md:text-3xl text-center">Meu trabalho</p>
-        <h1 className="text-2xl md:text-3xl font-title font-bold mt-2">
-          Veja os projetos em destaque
-        </h1>
+export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(
+    null
+  );
 
-        <div className="flex-1 mt-10 md:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 overflow-y-auto">
-          <a
-            href="https://github.com/Ytalo-Alves/TicketIA?tab=readme-ov-file"
-            target="_blank"
-          >
-            <Card
-              src="https://github.com/user-attachments/assets/2a4ce9f7-2681-471c-a00c-4d98b8b8aefe"
-              alt=""
-              title="Ticket AI"
-              text="Ticket AI para o evento AI para Devs, integrando com a API do github"
-            />
-          </a>
+  return (
+    <section
+      id="projects"
+      className="section min-h-screen relative flex items-center justify-center overflow-hidden"
+    >
+      <ScreenBackground />
 
-          <a href="https://github.com/Ytalo-Alves/web_in.orbit" target="_blank">
-            <Card
-              src="https://github.com/user-attachments/assets/8b44c1c8-279a-4016-8328-39945bd18396"
-              alt=""
-              title="Gerenciador de metas"
-              text="Aplicação Web para registro de metas com progresso semanal"
-            />
-          </a>
+      <div className="container-custom relative z-10 w-full py-16 md:py-24">
+        <SectionHeader
+          label="PORTFÓLIO"
+          title={
+            <>
+              Projetos em <span className="gradient-text">Destaque</span>
+            </>
+          }
+          description="Uma seleção de projetos que demonstram minha paixão por criar soluções inovadoras e funcionais."
+          align="center"
+        />
 
-          <a href="https://github.com/Ytalo-Alves/web_planner">
-            <Card
-              src="https://github.com/user-attachments/assets/ea657e7f-ba0a-482c-ac92-6c6882a6d8c3"
-              alt=""
-              title="Planejador de Viagens"
-              text="Aplicação web para planejamento de viagens, com o gerenciamento de atividades"
-            />
-          </a>
+        {/* Projects Grid */}
+        <div className="mt-12 relative rounded-3xl p-[1px] bg-gradient-to-br from-white/15 via-accent/20 to-transparent">
+          <div className="rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-xl p-4 md:p-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 animate-fadeUp">
+              {PROJECTS.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  title={project.title}
+                  description={project.description}
+                  image={project.imageUrl}
+                  techs={project.techs}
+                  githubUrl={project.githubUrl}
+                  liveUrl={project.liveUrl}
+                  onClick={() => setSelectedProject(project)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-  )
+
+      {/* Modal */}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
+    </section>
+  );
 }
