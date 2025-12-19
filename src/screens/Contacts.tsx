@@ -83,9 +83,9 @@ export default function Contacts() {
       <ScreenBackground />
 
       <div className="container-custom relative z-10 w-full py-16 md:py-24">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           {/* Left Column */}
-          <div className="flex flex-col text-center lg:text-left animate-fadeIn">
+          <div className="order-2 lg:order-1 flex flex-col text-center lg:text-left animate-fadeIn">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass border border-white/10 w-fit mx-auto lg:mx-0">
                 <span className="h-2 w-2 rounded-full bg-accent shadow-glow" />
@@ -157,7 +157,7 @@ export default function Contacts() {
           </div>
 
           {/* Right Column */}
-          <div className="animate-scaleIn">
+          <div className="order-1 lg:order-2 animate-scaleIn w-full max-w-xl mx-auto lg:mx-0">
             <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-white/15 via-accent/20 to-transparent">
               <div className="relative rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-2xl overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/[0.06] via-transparent to-transparent" />

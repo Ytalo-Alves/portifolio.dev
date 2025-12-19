@@ -25,7 +25,7 @@ export default function ProjectsMarquee() {
               aria-label={project.title}
               title={project.title}
             >
-              <div className="relative h-[88px] w-[156px] md:h-[96px] md:w-[168px] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+              <div className="relative h-[78px] w-[140px] sm:h-[88px] sm:w-[156px] md:h-[96px] md:w-[168px] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
                 <img
                   src={project.imageUrl}
                   alt={project.title}
