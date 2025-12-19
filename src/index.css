@@ -200,7 +200,8 @@ body {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%);
+    /* Compensa metade do `gap` (14px) para evitar "pulo" no loop */
+    transform: translateX(calc(-50% - 7px));
   }
 }
 

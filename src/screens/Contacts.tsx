@@ -264,7 +264,7 @@ export default function Contacts() {
                         <span className="flex items-center justify-center gap-3 rounded-2xl bg-primary-light/60 px-6 py-4 font-semibold text-white transition-all duration-300 group-hover:bg-primary-light/70 group-hover:shadow-glow">
                           <FaWhatsapp className="text-green-400" />
                           <span>Enviar no WhatsApp</span>
-                          <span className="text-white/40 font-mono text-xs tracking-widest">
+                          <span className="hidden sm:inline text-white/40 font-mono text-xs tracking-widest">
                             ENTER
                           </span>
                         </span>
