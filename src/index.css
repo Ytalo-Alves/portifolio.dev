@@ -4,18 +4,19 @@
 
 /* CSS Custom Properties - Design Tokens */
 :root {
-  /* Colors - Modern Palette */
-  --color-bg-primary: #050505;
-  --color-bg-secondary: #121212;
-  --color-bg-tertiary: #1e1e1e;
+  /* Tema: neutros frios + índigo / ciano */
+  --color-bg-primary: #08080a;
+  --color-bg-secondary: #101014;
+  --color-bg-tertiary: #18181c;
 
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #a3a3a3;
-  --color-text-tertiary: #666666;
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #a1a1aa;
+  --color-text-tertiary: #71717a;
 
-  --color-accent: #8B5CF6;
-  --color-accent-hover: #7C3AED;
-  --color-accent-glow: #A78BFA;
+  --color-accent: #6366f1;
+  --color-accent-hover: #4f46e5;
+  --color-accent-glow: #818cf8;
+  --color-accent-cyan: #22d3ee;
 
   /* Spacing */
   --spacing-sm: 0.5rem;
@@ -51,7 +52,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
@@ -59,16 +60,22 @@ body {
   color: var(--color-text-primary);
   font-family: "Maven Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
   background-image: radial-gradient(
-      circle at 50% 0%,
-      rgba(139, 92, 246, 0.15) 0%,
+      ellipse 100% 80% at 50% -10%,
+      rgba(99, 102, 241, 0.14) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 100% 20%,
+      rgba(6, 182, 212, 0.08) 0%,
       transparent 50%
     ),
-    linear-gradient(to bottom, transparent, #050505);
+    linear-gradient(to bottom, #08080a, #08080a);
 }
 
 /* Scrollbar Styling */
@@ -108,9 +115,9 @@ body {
 }
 
 .glass-card:hover {
-  background: rgba(30, 30, 30, 0.6);
-  border-color: rgba(139, 92, 246, 0.3);
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+  background: rgba(30, 30, 32, 0.65);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 0 24px rgba(99, 102, 241, 0.12);
   transform: translateY(-5px);
 }
 
@@ -129,17 +136,35 @@ body {
   background-clip: text;
 }
 
+/* Focus — visível no teclado, discreto no mouse */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
 /* Utility Classes */
 .container-custom {
   width: 100%;
-  max-width: 1200px;
+  max-width: 80rem;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding-left: max(1.5rem, env(safe-area-inset-left));
+    padding-right: max(1.5rem, env(safe-area-inset-right));
+  }
 }
 
 .section {
   min-height: 100vh;
-  padding: var(--spacing-xl) var(--spacing-md);
+  min-height: 100dvh;
+  padding: clamp(2rem, 5vw, var(--spacing-xl)) 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -147,17 +172,30 @@ body {
   position: relative;
 }
 
+/* Páginas no layout com sidebar — ritmo vertical consistente */
+.page-section {
+  width: 100%;
+  position: relative;
+  padding: 2.25rem 0 2.75rem;
+}
+
+@media (min-width: 1024px) {
+  .page-section {
+    padding: 2.5rem 0 3.5rem;
+  }
+}
+
 /* Grid Background */
 .bg-grid {
-  background-size: 40px 40px;
+  background-size: 48px 48px;
   background-image: linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.03) 1px,
+      rgba(255, 255, 255, 0.035) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
 }
 
 /* Marquee (Projects) */
@@ -424,11 +462,10 @@ body {
 @keyframes glow-pulse {
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.35), 0 0 32px rgba(34, 211, 238, 0.12);
   }
   50% {
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6),
-      0 0 60px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 36px rgba(99, 102, 241, 0.5), 0 0 60px rgba(6, 182, 212, 0.2);
   }
 }
 
@@ -454,8 +491,8 @@ body {
     linear-gradient(
         135deg,
         var(--color-accent),
-        #a855f7,
-        #ec4899,
+        #22d3ee,
+        #a78bfa,
         var(--color-accent)
       )
       border-box;
@@ -467,40 +504,40 @@ body {
 .gradient-text-animated {
   background: linear-gradient(
     135deg,
+    #22d3ee,
     var(--color-accent),
-    #a855f7,
-    #ec4899,
-    var(--color-accent)
+    #a78bfa,
+    #22d3ee
   );
-  background-size: 200% 200%;
+  background-size: 220% 220%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient 4s ease infinite;
+  animation: gradient 5s ease infinite;
 }
 
 /* Enhanced Glassmorphism with Holographic Tint */
 .glass-holographic {
   background: linear-gradient(
     135deg,
-    rgba(139, 92, 246, 0.05),
-    rgba(168, 85, 247, 0.05)
+    rgba(99, 102, 241, 0.07),
+    rgba(34, 211, 238, 0.05)
   );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 40px 0 rgba(139, 92, 246, 0.2);
+  box-shadow: 0 8px 40px 0 rgba(99, 102, 241, 0.15);
 }
 
 /* Animated Mesh Background */
 .mesh-background {
   background: linear-gradient(
     135deg,
-    #050505 0%,
-    #0a0a0a 25%,
-    #0f0f1a 50%,
-    #0a0a0a 75%,
-    #050505 100%
+    #08080a 0%,
+    #0c0c10 30%,
+    #101018 50%,
+    #0a0a12 70%,
+    #08080a 100%
   );
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
@@ -509,7 +546,7 @@ body {
 /* Orbital Ring Effect */
 .orbital-ring {
   position: absolute;
-  border: 2px solid rgba(139, 92, 246, 0.2);
+  border: 2px solid rgba(99, 102, 241, 0.25);
   border-radius: 50%;
   animation: rotate-slow 20s linear infinite;
 }

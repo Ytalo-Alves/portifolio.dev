@@ -6,12 +6,13 @@
 >
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="128" y2="128">
-      <stop offset="0" stop-color="#A78BFA" />
-      <stop offset="1" stop-color="#8B5CF6" />
+      <stop offset="0" stop-color="#22d3ee" />
+      <stop offset="0.5" stop-color="#6366f1" />
+      <stop offset="1" stop-color="#818cf8" />
     </linearGradient>
   </defs>
 
-  <rect x="10" y="10" width="108" height="108" rx="28" fill="#050505" />
+  <rect x="10" y="10" width="108" height="108" rx="28" fill="#08080a" />
   <rect
     x="10"
     y="10"

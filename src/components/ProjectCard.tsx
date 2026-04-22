@@ -20,9 +20,9 @@ const ProjectCard = ({
   onClick,
 }: ProjectCardProps) => {
   return (
-    <div className="group glass-card rounded-xl overflow-hidden relative hover:border-accent/30 transition-all duration-300 cursor-pointer">
+    <div className="group glass-card rounded-2xl overflow-hidden relative border border-white/[0.06] hover:border-accent/30 transition-all duration-300 cursor-pointer h-full flex flex-col">
       {/* Image Container */}
-      <div className="relative h-48 overflow-hidden" onClick={onClick}>
+      <div className="relative h-48 sm:h-52 shrink-0 overflow-hidden" onClick={onClick}>
         <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/90 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
         <img
           src={image}
@@ -40,7 +40,7 @@ const ProjectCard = ({
       </div>
 
       {/* Conteúdo */}
-      <div className="p-6 relative z-20">
+      <div className="p-6 relative z-20 flex flex-col flex-1 min-h-0">
         <h3
           className="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors duration-300 cursor-pointer"
           onClick={onClick}
@@ -69,7 +69,7 @@ const ProjectCard = ({
         </div>
 
         {/* Links */}
-        <div className="flex gap-4">
+        <div className="mt-auto flex gap-4 pt-2">
           {githubUrl && (
             <a
               href={githubUrl}

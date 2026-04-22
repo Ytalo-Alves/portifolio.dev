@@ -3,7 +3,6 @@ import ProjectCard from "../components/ProjectCard";
 import ProjectModal from "../components/ProjectModal";
 import { PROJECTS } from "../constants";
 import { ProjectData } from "../types";
-import ScreenBackground from "../components/ScreenBackground";
 import SectionHeader from "../components/SectionHeader";
 
 export default function Projects() {
@@ -14,11 +13,9 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="section min-h-screen relative flex items-center justify-center overflow-hidden"
+      className="page-section relative overflow-hidden"
     >
-      <ScreenBackground />
-
-      <div className="container-custom relative z-10 w-full py-16 md:py-24">
+      <div className="container-custom relative z-10 w-full">
         <SectionHeader
           label="PORTFÓLIO"
           title={

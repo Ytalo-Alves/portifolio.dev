@@ -2,7 +2,6 @@ import { FaCode, FaServer, FaCloud } from "react-icons/fa";
 import { motion } from "framer-motion";
 import CardServices from "../components/CardServices";
 import { SERVICES } from "../constants";
-import ScreenBackground from "../components/ScreenBackground";
 import SectionHeader from "../components/SectionHeader";
 
 const iconMapping: Record<string, React.ReactNode> = {
@@ -33,11 +32,9 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="section min-h-screen relative flex items-center justify-center overflow-hidden"
+      className="page-section relative overflow-hidden"
     >
-      <ScreenBackground />
-
-      <div className="container-custom relative z-10 w-full py-16 md:py-24">
+      <div className="container-custom relative z-10 w-full">
         <SectionHeader
           label="SERVIÇOS"
           title={

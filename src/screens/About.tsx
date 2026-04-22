@@ -1,18 +1,15 @@
 import { Link } from "react-router-dom";
 import { FaBolt, FaCode, FaGithub, FaLayerGroup, FaLinkedin } from "react-icons/fa";
 import { PERSONAL_INFO, SKILLS } from "../constants";
-import ScreenBackground from "../components/ScreenBackground";
 import SectionHeader from "../components/SectionHeader";
 
 export default function About() {
   return (
     <section
       id="about"
-      className="section min-h-screen relative flex items-center justify-center overflow-hidden"
+      className="page-section relative overflow-hidden"
     >
-      <ScreenBackground />
-
-      <div className="container-custom relative z-10 w-full py-16 md:py-24">
+      <div className="container-custom relative z-10 w-full max-w-6xl mx-auto">
         <SectionHeader
           label="SOBRE MIM"
           title={

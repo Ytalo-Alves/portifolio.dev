@@ -14,7 +14,7 @@ export default function LoadingScreen() {
         </div>
 
         {/* Loading Text */}
-        <p className="mt-6 text-text-secondary font-span animate-pulse">
+        <p className="mt-6 text-sm text-text-secondary font-mono animate-pulse">
           Carregando portfólio...
         </p>
       </div>

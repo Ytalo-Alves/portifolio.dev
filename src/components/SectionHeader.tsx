@@ -34,14 +34,14 @@ export default function SectionHeader({
         </span>
       </div>
 
-      <h2 className="mt-6 text-3xl md:text-5xl font-title font-bold leading-tight">
+      <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-title font-bold leading-[1.12] tracking-tight text-balance">
         {title}
       </h2>
 
       {description && (
         <p
           className={[
-            "mt-4 text-text-secondary max-w-2xl",
+            "mt-5 text-base sm:text-lg text-text-secondary/95 leading-relaxed max-w-2xl",
             isCenter ? "mx-auto" : "",
           ].join(" ")}
         >

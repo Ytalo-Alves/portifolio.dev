@@ -7,7 +7,6 @@ import {
 } from "react-icons/fa";
 import { SOCIAL_LINKS, PERSONAL_INFO } from "../constants";
 import ProjectsMarquee from "../components/ProjectsMarquee";
-import ScreenBackground from "../components/ScreenBackground";
 
 export default function Contacts() {
   const [formState, setFormState] = useState({
@@ -78,11 +77,9 @@ export default function Contacts() {
   return (
     <section
       id="contacts"
-      className="section min-h-screen relative flex items-center justify-center overflow-hidden"
+      className="page-section relative overflow-hidden"
     >
-      <ScreenBackground />
-
-      <div className="container-custom relative z-10 w-full py-16 md:py-24">
+      <div className="container-custom relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           {/* Left Column */}
           <div className="order-2 lg:order-1 flex flex-col text-center lg:text-left animate-fadeIn">
@@ -232,13 +229,13 @@ export default function Contacts() {
                         placeholder=" "
                         className="peer w-full rounded-2xl bg-white/[0.03] border border-white/10 px-4 py-4 text-white placeholder-transparent outline-none transition-colors focus:border-accent/40 focus:bg-white/[0.05]"
                       />
-                    <label
-                      htmlFor="subject"
-                      className="pointer-events-none absolute left-4 top-4 text-sm text-white/70 transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-white/60 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-accent bg-primary-light/70 px-2 rounded-md"
-                    >
-                      Assunto
-                    </label>
-                  </div>
+                      <label
+                        htmlFor="subject"
+                        className="pointer-events-none absolute left-4 top-4 text-sm text-white/70 transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-white/60 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-accent bg-primary-light/70 px-2 rounded-md"
+                      >
+                        Assunto
+                      </label>
+                    </div>
 
                     <div className="relative">
                       <textarea
@@ -251,13 +248,13 @@ export default function Contacts() {
                         placeholder=" "
                         className="peer w-full rounded-2xl bg-white/[0.03] border border-white/10 px-4 py-4 text-white placeholder-transparent outline-none transition-colors focus:border-accent/40 focus:bg-white/[0.05] resize-none"
                       />
-                    <label
-                      htmlFor="message"
-                      className="pointer-events-none absolute left-4 top-4 text-sm text-white/70 transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-white/60 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-accent bg-primary-light/70 px-2 rounded-md"
-                    >
-                      Mensagem
-                    </label>
-                  </div>
+                      <label
+                        htmlFor="message"
+                        className="pointer-events-none absolute left-4 top-4 text-sm text-white/70 transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-white/60 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-accent bg-primary-light/70 px-2 rounded-md"
+                      >
+                        Mensagem
+                      </label>
+                    </div>
 
                     <button type="submit" className="group w-full">
                       <span className="relative block rounded-2xl p-[1px] bg-gradient-to-r from-accent/70 via-blue-500/30 to-transparent">
