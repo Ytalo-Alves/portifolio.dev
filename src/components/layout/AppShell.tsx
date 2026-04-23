@@ -21,7 +21,7 @@ export default function AppShell({ children }: AppShellProps) {
         Pular para o conteúdo
       </a>
 
-      <div className="min-h-[100dvh] min-h-screen lg:pl-[17.5rem]">
+      <div className="min-h-[100dvh] min-h-screen lg:pl-28 xl:pl-32">
         <Sidebar />
 
         <div className="flex min-h-[100dvh] min-h-screen flex-col">

@@ -3,8 +3,8 @@ import { ProjectData, ServiceData, SocialLink, SkillData } from "../types";
 // Personal Information
 export const PERSONAL_INFO = {
   name: "Ytalo Alves",
-  title: "Desenvolvedor Fullstack",
-  bio: "Transformo necessidades em aplicações reais, evolventes e funcionais. Desenvolvo sistemas através da minha paixão pela tecnologia, contribuindo com soluções inovadoras e eficazes para desafios complexos.",
+  title: "Analista de Sistemas / Especialista em Implantação WMS",
+  bio: "Conecto tecnologia, processos e logística para transformar necessidades operacionais em sistemas mais claros, aderentes e eficientes.",
   profileImage: "http://github.com/Ytalo-Alves.png",
   flagImage:
     "https://github.com/user-attachments/assets/ef1e3965-c476-4cee-b569-2b38d0cdb37f",
@@ -179,49 +179,47 @@ export const PROJECTS: ProjectData[] = [
   },
 ];
 
-// Services
-// Services
 export const SERVICES: ServiceData[] = [
   {
-    id: "frontend",
-    title: "Desenvolvimento Frontend",
+    id: "implementation",
+    title: "Implantação WMS/ERP",
     description:
-      "Criação de interfaces modernas, responsivas e altamente interativas. Foco na experiência do usuário (UX) e performance, utilizando as tecnologias mais recentes do mercado.",
+      "Apoio na implantação de sistemas com foco em aderência ao processo, estabilidade operacional e clareza para o usuário final.",
     iconUrl:
       "https://github.com/user-attachments/assets/b0f6d0b4-02f7-4190-ae54-55e1352147dd",
     features: [
-      "Single Page Applications (SPA)",
-      "Design Responsivo & Mobile First",
-      "Otimização de Performance (Web Vitals)",
-      "Integração com APIs REST/GraphQL",
+      "Configuração de regras e parâmetros",
+      "Testes funcionais e validação de cenários",
+      "Treinamento de usuários-chave",
+      "Suporte ao go-live e estabilização",
     ],
   },
   {
-    id: "backend",
-    title: "Desenvolvimento Backend",
+    id: "processes",
+    title: "Processos & Requisitos",
     description:
-      "Arquitetura de sistemas robustos e escaláveis. Desenvolvimento de APIs seguras e eficientes para suportar suas aplicações e regras de negócio.",
+      "Mapeamento de fluxos operacionais e tradução das necessidades do negócio em requisitos claros para times técnicos e áreas usuárias.",
     iconUrl:
       "https://github.com/user-attachments/assets/4860fe9a-5493-4a65-94b8-be2e7ce72e8c",
     features: [
-      "APIs RESTful & GraphQL",
-      "Modelagem de Banco de Dados (SQL/NoSQL)",
-      "Autenticação & Segurança",
-      "Microserviços & Serverless",
+      "Levantamento com áreas de negócio",
+      "Mapeamento de processos logísticos",
+      "Critérios de aceite e documentação",
+      "Alinhamento entre operação e tecnologia",
     ],
   },
   {
-    id: "devops",
-    title: "DevOps & Infraestrutura",
+    id: "optimization",
+    title: "Otimização Operacional",
     description:
-      "Gerenciamento de infraestrutura e automação de processos. Garantia de alta disponibilidade, segurança e entrega contínua do seu software.",
+      "Análise de rotinas, gargalos e oportunidades de melhoria para tornar processos mais simples, rastreáveis e eficientes.",
     iconUrl:
       "https://github.com/user-attachments/assets/87606d46-f64c-4990-80ad-8647207449cc",
     features: [
-      "CI/CD Pipelines",
-      "Docker & Containerização",
-      "Cloud Computing (AWS/Vercel)",
-      "Monitoramento & Logs",
+      "Diagnóstico de fluxo operacional",
+      "Padronização de rotinas e registros",
+      "Indicadores para acompanhamento",
+      "Melhoria contínua com visão prática",
     ],
   },
 ];
