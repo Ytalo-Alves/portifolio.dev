@@ -2,7 +2,6 @@ import { ReactNode, useState } from "react";
 import Sidebar from "./Sidebar";
 import MobileTopBar from "./MobileTopBar";
 import MobileNav from "./MobileNav";
-import SiteFooter from "./SiteFooter";
 import ScreenBackground from "../ScreenBackground";
 
 type AppShellProps = {
@@ -42,8 +41,6 @@ export default function AppShell({ children }: AppShellProps) {
             </div>
             <div className="relative z-[1]">{children}</div>
           </main>
-
-          <SiteFooter />
         </div>
       </div>
     </>
