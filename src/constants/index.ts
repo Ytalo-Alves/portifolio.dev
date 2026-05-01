@@ -55,127 +55,42 @@ export const SKILLS: SkillData[] = [
 // Projects
 export const PROJECTS: ProjectData[] = [
   {
-    id: "ticket-ai",
-    title: "Ticket AI",
+    id: "pdv-sales-management",
+    title: "Sistema PDV - Gestão de Vendas",
     description:
-      "Ticket AI para o evento AI para Devs, integrando com a API do GitHub",
+      "Sistema web de PDV para varejo alimentar, com autenticação individual de operadores, ambiente restrito e fluxo seguro para operação de frente de caixa.",
     detailedDescription:
-      "Sistema inteligente de geração de tickets personalizados para eventos de tecnologia. Utiliza a API do GitHub para buscar informações do perfil do usuário e criar tickets únicos com design moderno e informações personalizadas.",
-    imageUrl:
-      "https://github.com/user-attachments/assets/2a4ce9f7-2681-471c-a00c-4d98b8b8aefe",
-    screenshots: [
-      "https://github.com/user-attachments/assets/2a4ce9f7-2681-471c-a00c-4d98b8b8aefe",
-    ],
-    githubUrl: "https://github.com/Ytalo-Alves/TicketIA?tab=readme-ov-file",
-    techs: ["React", "Node.js", "GitHub API", "TypeScript"],
+      "Sistema web de PDV para varejo alimentar, com autenticação individual de operadores, ambiente restrito e fluxo seguro para operação de frente de caixa.",
+    techs: ["React", "TypeScript", "PDV", "Autenticação", "Varejo"],
     features: [
-      "Integração com GitHub API",
-      "Geração automática de tickets",
-      "Design responsivo e moderno",
-      "Download de tickets em alta resolução",
+      "Autenticação individual de operadores",
+      "Ambiente restrito para operação",
+      "Fluxo de frente de caixa",
+      "Interface web responsiva",
     ],
-    liveUrl: "https://ticket-ai-demo.vercel.app",
+    liveUrl: "https://pdv-frontend.netlify.app/login",
   },
   {
-    id: "goal-manager",
-    title: "Gerenciador de Metas",
-    description: "Aplicação Web para registro de metas com progresso semanal",
-    detailedDescription:
-      "Plataforma completa para gerenciamento de metas pessoais e profissionais. Permite criar, acompanhar e visualizar o progresso de suas metas com gráficos interativos e notificações de progresso semanal.",
-    imageUrl:
-      "https://github.com/user-attachments/assets/8b44c1c8-279a-4016-8328-39945bd18396",
-    screenshots: [
-      "https://github.com/user-attachments/assets/8b44c1c8-279a-4016-8328-39945bd18396",
-    ],
-    githubUrl: "https://github.com/Ytalo-Alves/web_in.orbit",
-    techs: ["React", "TypeScript", "Tailwind CSS", "Radix UI"],
-    features: [
-      "Dashboard interativo de metas",
-      "Progresso semanal visualizado",
-      "Sistema de notificações",
-      "Interface intuitiva e responsiva",
-    ],
-  },
-  {
-    id: "travel-planner",
-    title: "Planejador de Viagens",
+    id: "delivery-scheduling-system",
+    title: "Sistema de Agendamento de Entregas",
     description:
-      "Aplicação web para planejamento de viagens, com o gerenciamento de atividades",
+      "Aplicação web para controle e agendamento de entregas, desenvolvida para melhorar a organização operacional, acompanhar demandas e otimizar processos logísticos.",
     detailedDescription:
-      "Ferramenta completa para organizar suas viagens de forma eficiente. Gerencie destinos, atividades, orçamento e compartilhe seus planos com amigos. Interface moderna e intuitiva para tornar o planejamento de viagens uma experiência agradável.",
-    imageUrl:
-      "https://github.com/user-attachments/assets/ea657e7f-ba0a-482c-ac92-6c6882a6d8c3",
-    screenshots: [
-      "https://github.com/user-attachments/assets/ea657e7f-ba0a-482c-ac92-6c6882a6d8c3",
+      "Aplicação web para controle e agendamento de entregas, desenvolvida para melhorar a organização operacional, acompanhar demandas e otimizar processos logísticos.",
+    techs: [
+      "React",
+      "TypeScript",
+      "Logística",
+      "Agendamento",
+      "Gestão Operacional",
     ],
-    githubUrl: "https://github.com/Ytalo-Alves/web_planner",
-    techs: ["React", "Vite", "Tailwind CSS", "React Router"],
     features: [
-      "Planejamento de itinerários",
-      "Gerenciamento de atividades",
-      "Controle de orçamento",
-      "Compartilhamento de viagens",
+      "Controle de agendamentos",
+      "Acompanhamento de demandas",
+      "Organização da operação logística",
+      "Interface web responsiva",
     ],
-  },
-  {
-    id: "ecommerce-dashboard",
-    title: "Dashboard E-commerce",
-    description: "Painel administrativo completo para gestão de lojas virtuais",
-    detailedDescription:
-      "Dashboard moderno e completo para gerenciamento de e-commerce. Visualize métricas em tempo real, gerencie produtos, pedidos e clientes. Interface intuitiva com gráficos interativos e relatórios detalhados para tomada de decisões estratégicas.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    screenshots: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    ],
-    githubUrl: "https://github.com/Ytalo-Alves",
-    techs: ["React", "TypeScript", "Chart.js", "Tailwind CSS"],
-    features: [
-      "Métricas em tempo real",
-      "Gestão de produtos e estoque",
-      "Análise de vendas",
-      "Relatórios personalizados",
-    ],
-  },
-  {
-    id: "task-manager",
-    title: "Gerenciador de Tarefas",
-    description: "Sistema Kanban para organização de projetos e tarefas",
-    detailedDescription:
-      "Aplicação de gerenciamento de tarefas estilo Kanban, perfeita para equipes ágeis. Organize projetos, atribua tarefas, defina prioridades e acompanhe o progresso em tempo real. Suporta colaboração em equipe com comentários e anexos.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80",
-    screenshots: [
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80",
-    ],
-    githubUrl: "https://github.com/Ytalo-Alves",
-    techs: ["React", "TypeScript", "DnD Kit", "Zustand"],
-    features: [
-      "Quadros Kanban personalizáveis",
-      "Drag and drop intuitivo",
-      "Colaboração em tempo real",
-      "Sistema de tags e filtros",
-    ],
-  },
-  {
-    id: "weather-app",
-    title: "Previsão do Tempo",
-    description: "App de clima com previsões detalhadas e mapas interativos",
-    detailedDescription:
-      "Aplicação de previsão do tempo com interface elegante e dados precisos. Visualize condições climáticas atuais, previsões horárias e semanais, mapas de radar e alertas meteorológicos. Suporta múltiplas localizações e unidades de medida.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&q=80",
-    screenshots: [
-      "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&q=80",
-    ],
-    githubUrl: "https://github.com/Ytalo-Alves",
-    techs: ["React", "OpenWeather API", "Leaflet", "Tailwind CSS"],
-    features: [
-      "Previsões precisas e atualizadas",
-      "Mapas interativos de radar",
-      "Múltiplas localizações salvas",
-      "Alertas meteorológicos",
-    ],
+    liveUrl: "https://delivery-scheduling-system.netlify.app/",
   },
 ];
 
@@ -265,7 +180,9 @@ export const PRELOAD_IMAGES = [
   PERSONAL_INFO.profileImage,
   PERSONAL_INFO.flagImage,
   ...SKILLS.map((skill) => skill.iconUrl),
-  ...PROJECTS.map((project) => project.imageUrl),
+  ...PROJECTS.map((project) => project.imageUrl).filter(
+    (url): url is string => Boolean(url)
+  ),
   ...SERVICES.map((service) => service.iconUrl),
   ...SOCIAL_LINKS.map((link) => link.iconUrl),
 ];

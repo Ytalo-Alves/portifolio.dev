@@ -25,6 +25,8 @@ const socialIcon = {
   email: FaEnvelope,
 };
 
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default function Contacts() {
   const [formState, setFormState] = useState({
     from_name: "",
@@ -43,51 +45,74 @@ export default function Contacts() {
   };
 
   const buildContactText = () => {
-    return [
-      "*NOVO CONTATO — PORTFÓLIO*",
+    const name = formState.from_name.trim();
+    const email = formState.reply_to.trim();
+    const subject = formState.subject.trim();
+    const messageText = formState.message.trim();
+
+    const messageLines = [
+      `Olá, me chamo ${name}.`,
       "",
-      `*Nome:* ${formState.from_name}`,
-      `*Email:* ${formState.reply_to}`,
-      `*Assunto:* ${formState.subject}`,
+      email ? `E-mail: ${email}` : "",
+      subject ? `Assunto: ${subject}` : "",
       "",
-      "*Mensagem:*",
-      formState.message,
+      "Mensagem:",
+      messageText,
       "",
+      "Vim através do seu portfólio.",
     ].join("\n");
+
+    return messageLines.replace(/\n{3,}/g, "\n\n").trim();
   };
 
   const openWhatsApp = () => {
-    if (
-      !formState.from_name ||
-      !formState.reply_to ||
-      !formState.subject ||
-      !formState.message
-    ) {
-      alert("Por favor, preencha todos os campos.");
-      return;
+    const name = formState.from_name.trim();
+    const email = formState.reply_to.trim();
+    const messageText = formState.message.trim();
+
+    if (!name || !messageText) {
+      alert("Por favor, preencha nome e mensagem.");
+      return false;
     }
 
-    const encodedMessage = encodeURIComponent(buildContactText());
+    if (email && !emailPattern.test(email)) {
+      alert("Por favor, informe um e-mail válido.");
+      return false;
+    }
+
     const rawNumber = PERSONAL_INFO.whatsappNumber.replace(/\D/g, "");
+
+    if (!rawNumber) {
+      alert("Número de WhatsApp não configurado.");
+      return false;
+    }
+
     const phoneNumber = rawNumber.startsWith("55")
       ? rawNumber
       : rawNumber.length === 11
         ? `55${rawNumber}`
         : rawNumber;
 
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    if (!/^\d+$/.test(phoneNumber)) {
+      alert("Número de WhatsApp inválido.");
+      return false;
+    }
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      buildContactText()
+    )}`;
 
     window.open(whatsappUrl, "_blank");
+    return true;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const form = e.currentTarget as HTMLFormElement;
-    if (!form.checkValidity()) {
-      form.reportValidity();
+
+    if (!openWhatsApp()) {
       return;
     }
-    openWhatsApp();
+
     setFormState({ from_name: "", reply_to: "", subject: "", message: "" });
   };
 
@@ -124,46 +149,59 @@ export default function Contacts() {
         />
 
         <motion.div
-          className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]"
+          className="mt-12 grid items-stretch gap-6 lg:grid-cols-[0.92fr_minmax(0,1.08fr)]"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.14 }}
         >
-          <motion.div className="space-y-6" variants={itemVariants}>
-            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.07] via-white/[0.025] to-transparent p-6 shadow-bento backdrop-blur-xl md:p-8">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
-                <FaWhatsapp />
+          <motion.div className="grid h-full gap-6" variants={itemVariants}>
+            <article className="group flex h-full min-h-[25rem] flex-col rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.07] via-white/[0.025] to-transparent p-6 shadow-bento backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/25 hover:bg-white/[0.04] md:p-7">
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
+                  <FaWhatsapp className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-[0.28em] text-text-tertiary">
+                    canal principal
+                  </p>
+                  <h3 className="mt-2 font-title text-2xl font-bold leading-tight text-white">
+                    Conte o desafio. Eu retorno com clareza.
+                  </h3>
+                </div>
               </div>
-              <p className="mt-6 font-mono text-xs uppercase tracking-[0.28em] text-text-tertiary">
-                canal principal
-              </p>
-              <h3 className="mt-2 font-title text-2xl font-bold leading-tight text-white md:text-3xl">
-                Conte o desafio. Eu retorno com clareza.
-              </h3>
-              <p className="mt-4 text-base leading-relaxed text-text-secondary">
+
+              <p className="mt-5 text-sm leading-relaxed text-text-secondary md:text-[15px]">
                 Pode ser uma implantação, melhoria de processo, necessidade de
-                documentação, validação funcional ou uma solução web. Quanto mais
-                contexto, melhor consigo entender o próximo passo.
+                documentação, validação funcional ou uma solução web. Quanto
+                mais contexto, melhor consigo entender o próximo passo.
               </p>
 
-              <div className="mt-6 grid gap-3">
+              <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                 {contactReasons.map((reason) => (
                   <div
                     key={reason}
-                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-zinc-950/35 p-4 text-sm text-text-secondary"
+                    className="flex min-h-[4rem] items-center gap-3 rounded-2xl border border-white/10 bg-zinc-950/35 p-4 text-sm leading-snug text-text-secondary transition-colors group-hover:border-white/15"
                   >
-                    <span className="h-2 w-2 rounded-full bg-cyan-300" />
-                    {reason}
+                    <span className="h-2 w-2 shrink-0 rounded-full bg-cyan-300" />
+                    <span>{reason}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </article>
 
-            <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-bento backdrop-blur-xl md:p-7">
-              <p className="font-mono text-xs uppercase tracking-[0.28em] text-text-tertiary">
-                canais
-              </p>
+            <article className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-bento backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/25 hover:bg-white/[0.04] md:p-7">
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-[0.28em] text-text-tertiary">
+                    canais
+                  </p>
+                  <h3 className="mt-2 font-title text-xl font-bold text-white">
+                    Onde me encontrar
+                  </h3>
+                </div>
+              </div>
+
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 {SOCIAL_LINKS.map((link) => {
                   const Icon = socialIcon[link.id as keyof typeof socialIcon];
@@ -173,27 +211,31 @@ export default function Contacts() {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-zinc-950/35 p-4 transition-colors hover:border-accent/30 hover:bg-white/[0.04]"
+                      className="group/social flex min-h-[4.75rem] items-center justify-between gap-3 rounded-2xl border border-white/10 bg-zinc-950/35 p-4 transition-all duration-300 hover:border-accent/30 hover:bg-white/[0.04]"
                     >
-                      <span className="flex items-center gap-3">
-                        <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-cyan-200">
+                      <span className="flex min-w-0 items-center gap-3">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-cyan-200">
                           {Icon && <Icon className="h-4 w-4" />}
                         </span>
-                        <span className="text-sm font-semibold text-white">
+                        <span className="truncate text-sm font-semibold text-white">
                           {link.name}
                         </span>
                       </span>
-                      <FaArrowRight className="h-3.5 w-3.5 text-text-tertiary transition-transform group-hover:translate-x-0.5 group-hover:text-cyan-200" />
+                      <FaArrowRight className="h-3.5 w-3.5 shrink-0 text-text-tertiary transition-transform group-hover/social:translate-x-0.5 group-hover/social:text-cyan-200" />
                     </a>
                   );
                 })}
               </div>
-            </div>
+            </article>
           </motion.div>
 
-          <motion.div variants={itemVariants}>
-            <div className="relative rounded-3xl border border-white/10 bg-white/[0.03] shadow-bento backdrop-blur-xl">
-              <form onSubmit={handleSubmit} className="p-6 md:p-8">
+          <motion.div className="h-full" variants={itemVariants}>
+            <article className="relative flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.03] shadow-bento backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/25 hover:bg-white/[0.04]">
+              <form
+                onSubmit={handleSubmit}
+                noValidate
+                className="flex h-full flex-col p-6 md:p-8"
+              >
                 <div className="flex flex-col gap-4 border-b border-white/10 pb-6 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <p className="font-mono text-xs uppercase tracking-[0.28em] text-text-tertiary">
@@ -212,7 +254,7 @@ export default function Contacts() {
                   </div>
                 </div>
 
-                <div className="mt-7 space-y-5">
+                <div className="mt-7 flex flex-1 flex-col space-y-5">
                   <div className="grid gap-5 md:grid-cols-2">
                     <div>
                       <label
@@ -228,6 +270,7 @@ export default function Contacts() {
                         value={formState.from_name}
                         onChange={handleChange}
                         required
+                        aria-required="true"
                         className="w-full rounded-2xl border border-white/10 bg-zinc-950/40 px-4 py-4 text-white outline-none transition-colors placeholder:text-text-tertiary focus:border-accent/40 focus:bg-white/[0.04]"
                         placeholder="Seu nome"
                       />
@@ -238,7 +281,7 @@ export default function Contacts() {
                         htmlFor="email"
                         className="mb-2 block text-sm font-medium text-zinc-300"
                       >
-                        Email
+                        Email <span className="text-text-tertiary">(opcional)</span>
                       </label>
                       <input
                         type="email"
@@ -246,7 +289,6 @@ export default function Contacts() {
                         name="reply_to"
                         value={formState.reply_to}
                         onChange={handleChange}
-                        required
                         className="w-full rounded-2xl border border-white/10 bg-zinc-950/40 px-4 py-4 text-white outline-none transition-colors placeholder:text-text-tertiary focus:border-accent/40 focus:bg-white/[0.04]"
                         placeholder="seu@email.com"
                       />
@@ -258,7 +300,7 @@ export default function Contacts() {
                       htmlFor="subject"
                       className="mb-2 block text-sm font-medium text-zinc-300"
                     >
-                      Assunto
+                      Assunto <span className="text-text-tertiary">(opcional)</span>
                     </label>
                     <input
                       type="text"
@@ -266,7 +308,6 @@ export default function Contacts() {
                       name="subject"
                       value={formState.subject}
                       onChange={handleChange}
-                      required
                       className="w-full rounded-2xl border border-white/10 bg-zinc-950/40 px-4 py-4 text-white outline-none transition-colors placeholder:text-text-tertiary focus:border-accent/40 focus:bg-white/[0.04]"
                       placeholder="Ex: implantação WMS, processo, projeto web"
                     />
@@ -285,15 +326,16 @@ export default function Contacts() {
                       value={formState.message}
                       onChange={handleChange}
                       required
+                      aria-required="true"
                       rows={6}
-                      className="w-full resize-none rounded-2xl border border-white/10 bg-zinc-950/40 px-4 py-4 text-white outline-none transition-colors placeholder:text-text-tertiary focus:border-accent/40 focus:bg-white/[0.04]"
+                      className="min-h-[11rem] w-full resize-none rounded-2xl border border-white/10 bg-zinc-950/40 px-4 py-4 text-white outline-none transition-colors placeholder:text-text-tertiary focus:border-accent/40 focus:bg-white/[0.04]"
                       placeholder="Descreva o contexto, objetivo e prazo, se houver."
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="group inline-flex min-h-[3.25rem] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-6 text-sm font-semibold text-white shadow-glow transition-transform hover:scale-[1.01] active:scale-[0.99]"
+                    className="group mt-auto inline-flex min-h-[3.25rem] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-6 text-sm font-semibold text-white shadow-glow transition-transform hover:scale-[1.01] active:scale-[0.99]"
                   >
                     <FaWhatsapp className="mr-2 h-4 w-4 text-green-200" />
                     Enviar mensagem
@@ -301,7 +343,7 @@ export default function Contacts() {
                   </button>
                 </div>
               </form>
-            </div>
+            </article>
           </motion.div>
         </motion.div>
       </div>

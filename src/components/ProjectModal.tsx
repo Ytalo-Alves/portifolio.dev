@@ -51,13 +51,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         </button>
 
         {/* Project Image */}
-        <div className="w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8">
-          <img
-            src={project.imageUrl}
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
-        </div>
+        {project.imageUrl && (
+          <div className="w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8">
+            <img
+              src={project.imageUrl}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
 
         {/* Project Title */}
         <h2 className="text-3xl md:text-4xl font-bold mb-4">{project.title}</h2>

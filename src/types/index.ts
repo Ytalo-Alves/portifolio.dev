@@ -3,9 +3,9 @@ export interface ProjectData {
   title: string;
   description: string;
   detailedDescription?: string;
-  imageUrl: string;
+  imageUrl?: string;
   screenshots?: string[];
-  githubUrl: string;
+  githubUrl?: string;
   techs: string[];
   features?: string[];
   liveUrl?: string;
